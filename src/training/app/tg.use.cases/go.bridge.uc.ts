@@ -3,8 +3,6 @@ import { TelegramAdapter } from "../../../adapters/telegram.adapter";
 import { makeKeyboard } from "../../../application/make.keyboard";
 import { TrainingRepository } from "../../inf/training.db.repo";
 import { TrainingQueryRepository } from "../../inf/training.q.repo";
-import { LegLifts } from "../../dom/exercises/leg.lifts.entity";
-import { Squats } from "../../dom/exercises/squats.entity";
 import { Bridge } from "../../dom/exercises/bridge.etity";
 
 export class GoBridgeCommand {
@@ -105,22 +103,22 @@ export class GoBridgeUseCase
       for (let key of Object.keys(nextExercise)) {
         switch (key) {
           case "push-ups":
-            keys["Начать отжимания"] = "/goPushUps";
+            keys["Начать отжимания"] = "/goPushUps.";
             break;
           case "leg-lifts":
-            keys["Начать подъемы ног"] = "/goLegLifts";
+            keys["Начать подъемы ног"] = "/goLegLifts.";
             break;
           case "pull-ups":
-            keys["Начать подтягивания"] = "/goPullUps";
+            keys["Начать подтягивания"] = "/goPullUps.";
             break;
           case "squats":
-            keys["Начать приседания"] = "/goSquats";
+            keys["Начать приседания"] = "/goSquats.";
             break;
           case "handstand-push-ups":
-            keys["Начать отжимания в стойке"] = "/goHandstandPushUps";
+            keys["Начать отжимания в стойке"] = "/goHandstandPushUps.";
             break;
           case "bridge":
-            keys["Начать мосты"] = "/goBridge";
+            keys["Начать мосты"] = "/goBridge.";
             break;
         }
       }
@@ -150,7 +148,7 @@ export class GoBridgeUseCase
       const message = "Не могу найти запись по мостам. Предлагаю" +
         " заново начать тренировку";
 
-      const key = { "Начать тренировку": "/startTraining" };
+      const key = { "Начать тренировку": "/startTraining." };
       const keyboard = makeKeyboard(key);
 
       await this.telegramAdapter.sendMessage(message, +tgId, keyboard);
@@ -168,7 +166,7 @@ export class GoBridgeUseCase
       const message = "Кажется это упражнение не по расписанию." +
         " Предлагаю заново начать тренировку";
 
-      const key = { "Начать тренировку": "/startTraining" };
+      const key = { "Начать тренировку": "/startTraining." };
       const keyboard = makeKeyboard(key);
 
       await this.telegramAdapter.sendMessage(message, +tgId, keyboard);

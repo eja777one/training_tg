@@ -3,7 +3,6 @@ import { TelegramAdapter } from "../../../adapters/telegram.adapter";
 import { makeKeyboard } from "../../../application/make.keyboard";
 import { TrainingRepository } from "../../inf/training.db.repo";
 import { TrainingQueryRepository } from "../../inf/training.q.repo";
-import { PushUps } from "../../dom/exercises/push.ups.entity";
 import { LegLifts } from "../../dom/exercises/leg.lifts.entity";
 
 export class GoLegLiftsCommand {
@@ -88,7 +87,7 @@ export class GoLegLiftsUseCase
 
         await this.trainingRepository.saveTraining(training);
 
-        const key = { "Когда следующая тренировка": "/nextTrainingDate" };
+        const key = { "Когда следующая тренировка": "/nextTrainingDate." };
         const keyboard = makeKeyboard(key);
 
         await this.telegramAdapter.sendMessage(message, +tgId, keyboard);
@@ -104,22 +103,22 @@ export class GoLegLiftsUseCase
       for (let key of Object.keys(nextExercise)) {
         switch (key) {
           case "push-ups":
-            keys["Начать отжимания"] = "/goPushUps";
+            keys["Начать отжимания"] = "/goPushUps.";
             break;
           case "leg-lifts":
-            keys["Начать подъемы ног"] = "/goLegLifts";
+            keys["Начать подъемы ног"] = "/goLegLifts.";
             break;
           case "pull-ups":
-            keys["Начать подтягивания"] = "/goPullUps";
+            keys["Начать подтягивания"] = "/goPullUps.";
             break;
           case "squats":
-            keys["Начать приседания"] = "/goSquats";
+            keys["Начать приседания"] = "/goSquats.";
             break;
           case "handstand-push-ups":
-            keys["Начать отжимания в стойке"] = "/goHandstandPushUps";
+            keys["Начать отжимания в стойке"] = "/goHandstandPushUps.";
             break;
           case "bridge":
-            keys["Начать мосты"] = "/goBridge";
+            keys["Начать мосты"] = "/goBridge.";
             break;
         }
       }
@@ -149,7 +148,7 @@ export class GoLegLiftsUseCase
       const message = "Не могу найти запись по подъемам ног. Предлагаю" +
         " заново начать тренировку";
 
-      const key = { "Начать тренировку": "/startTraining" };
+      const key = { "Начать тренировку": "/startTraining." };
       const keyboard = makeKeyboard(key);
 
       await this.telegramAdapter.sendMessage(message, +tgId, keyboard);
@@ -168,7 +167,7 @@ export class GoLegLiftsUseCase
       const message = "Кажется это упражнение не по расписанию." +
         " Предлагаю заново начать тренировку";
 
-      const key = { "Начать тренировку": "/startTraining" };
+      const key = { "Начать тренировку": "/startTraining." };
       const keyboard = makeKeyboard(key);
 
       await this.telegramAdapter.sendMessage(message, +tgId, keyboard);

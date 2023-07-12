@@ -26,7 +26,7 @@ export class StartUseCase
     if (isAthleteExists) {
       const message = `Привет ${isAthleteExists.name}!\nЯ рад что ты вернулся!`;
 
-      const key = { "Показать следующую тренировку": "/nextTrainingDate" };
+      const key = { "Показать следующую тренировку": "/nextTrainingDate." };
       const keyboard = makeKeyboard(key);
 
       await this.telegramAdapter.sendMessage(message, +tgId, keyboard);
@@ -35,7 +35,7 @@ export class StartUseCase
 
     const message = `Привет ${tgName}! Для начала расскажи о себе`;
 
-    const key = { "Добавить инфо обо мне": "/addMyInfo" };
+    const key = { "Добавить инфо обо мне": "/addMyInfo." };
     const keyboard = makeKeyboard(key);
 
     await this.telegramAdapter.sendMessage(message, +tgId, keyboard);

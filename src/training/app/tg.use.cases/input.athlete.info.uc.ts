@@ -50,7 +50,7 @@ export class InputAthleteInfoUseCase
 
     const message = "Данные записаны!";
 
-    const key = { "Узнать о тренировках": "/aboutTraining" };
+    const key = { "Узнать о тренировках": "/aboutTraining." };
     const keyboard = makeKeyboard(key);
 
     await this.telegramAdapter.sendMessage(message, +tgId, keyboard);

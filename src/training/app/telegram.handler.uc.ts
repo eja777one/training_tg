@@ -45,75 +45,73 @@ export class TelegramHandlerUseCase
     tgTime = tgTime || command.payload?.callback_query?.message?.date;
 
     switch (true) {
-      case /^\/start{6}$/.test(tgText):
+      case /^\/start\./.test(tgText):
         await this.commandBus.execute(new StartCommand(tgId, tgName));
         break;
-      case /\/addMyInfo/.test(tgText):
+      case /\/addMyInfo\./.test(tgText):
         await this.commandBus.execute(new AddAthleteInfoCommand(tgId));
         break;
       case /^[i,I]nfo_[а-я, А-Я]{2,15}_[м,М,ж,Ж]{1}_\d{2}/.test(tgText):
         await this.commandBus.execute(new InputAthleteInfoCommand(tgId, tgText));
         break;
-      case /\/modMyInfo/.test(tgText):
+      case /\/modMyInfo\./.test(tgText):
         await this.commandBus.execute(new ModAthleteInfoCommand(tgId));
         break;
       case /^modInfo_[а-я, А-Я]{2,15}_[м,М,ж,Ж]{1}_\d{2}/.test(tgText):
         await this.commandBus.execute(new InputAthleteInfoCommand(tgId, tgText));
         break;
-      case /\/aboutTraining/.test(tgText):
+      case /\/aboutTraining\./.test(tgText):
         await this.commandBus.execute(new AboutTrainingCommand(tgId));
         break;
-      case /\/aboutExercises/.test(tgText):
+      case /\/aboutExercises\./.test(tgText):
         await this.commandBus.execute(new AboutExercisesCommand(tgId));
         break;
-      case /\/startProgram/.test(tgText):
+      case /\/startProgram\./.test(tgText):
         await this.commandBus.execute(new StartProgramCommand(tgId));
         break;
       case /^startDate_\d{2}_\d{2}_\d{4}/.test(tgText):
         await this.commandBus.execute(
           new InputStartDateCommand(tgId, tgText, tgTime));
         break;
-      case /\/nextTrainingDate/.test(tgText):
+      case /\/nextTrainingDate\./.test(tgText):
         await this.commandBus.execute(new NextTrainingDateCommand(tgId));
         break;
-      case /\/startTraining/.test(tgText):
+      case /\/startTraining\./.test(tgText):
         await this.commandBus.execute(new StartTrainingCommand(tgId, tgTime));
         break;
-      case /\/passTraining/.test(tgText):
+      case /\/passTraining\./.test(tgText):
         await this.commandBus.execute(new PassTrainingCommand(tgId, tgTime));
         break;
-      case /\/goPushUps/.test(tgText):
+      case /\/goPushUps\./.test(tgText):
       case /^\/goPushUps_\d{1,2}/.test(tgText):
         await this.commandBus.execute(new GoPushUpsCommand(tgId, tgTime,
           +tgText.split("_")[1]));
         break;
-      case /\/goLegLifts/.test(tgText):
+      case /\/goLegLifts\./.test(tgText):
       case /^\/goLegLifts_\d{1,2}/.test(tgText):
         await this.commandBus.execute(new GoLegLiftsCommand(tgId, tgTime,
           +tgText.split("_")[1]));
         break;
-      case /\/goPullUps/.test(tgText):
+      case /\/goPullUps\./.test(tgText):
       case /^\/goPullUps_\d{1,2}/.test(tgText):
         await this.commandBus.execute(new GoPullUpsCommand(tgId, tgTime,
           +tgText.split("_")[1]));
         break;
-      case /\/goSquats/.test(tgText):
+      case /\/goSquats\./.test(tgText):
       case /^\/goSquats_\d{1,2}/.test(tgText):
         await this.commandBus.execute(new GoSquatsCommand(tgId, tgTime,
           +tgText.split("_")[1]));
         break;
-      case /\/goHandstandPushUps/.test(tgText):
+      case /\/goHandstandPushUps\./.test(tgText):
       case /^\/goHandstandPushUps_\d{1,2}/.test(tgText):
         await this.commandBus.execute(new GoHandstandPushUpsCommand(tgId, tgTime,
           +tgText.split("_")[1]));
         break;
-      case /\/goBridge/.test(tgText):
+      case /\/goBridge\./.test(tgText):
       case /^\/goBridge_\d{1,2}/.test(tgText):
         await this.commandBus.execute(new GoBridgeCommand(tgId, tgTime,
           +tgText.split("_")[1]));
         break;
-
-
       default:
         await this.commandBus.execute(new UnknownCommand(tgId));
         break;

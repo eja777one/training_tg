@@ -26,7 +26,7 @@ export class PassTrainingUseCase
       const message = "Не могу найти следующую тренировку. Предлагаю" +
         " посмотреть программу упражнений и начать тренировки";
 
-      const key = { "Посмотреть упражнения": "/aboutExercises" };
+      const key = { "Посмотреть упражнения": "/aboutExercises." };
       const keyboard = makeKeyboard(key);
 
       await this.telegramAdapter.sendMessage(message, +tgId, keyboard);
@@ -42,7 +42,7 @@ export class PassTrainingUseCase
     if (today < nextTraining) {
       const message = "Кажется твоя тренировка не сегодня";
 
-      const key = { "Когда следующая тренировка": "/nextTrainingDate" };
+      const key = { "Когда следующая тренировка": "/nextTrainingDate." };
       const keyboard = makeKeyboard(key);
 
       await this.telegramAdapter.sendMessage(message, +tgId, keyboard);
@@ -64,7 +64,7 @@ export class PassTrainingUseCase
 
       const message = "Кажется ты пропустил тренировку. Поэтому я ее перенес";
 
-      const key = { "Когда следующая тренировка": "/nextTrainingDate" };
+      const key = { "Когда следующая тренировка": "/nextTrainingDate." };
       const keyboard = makeKeyboard(key);
 
       await this.telegramAdapter.sendMessage(message, +tgId, keyboard);
@@ -82,7 +82,7 @@ export class PassTrainingUseCase
 
     const message = "Я перенес твою тренировку";
 
-    const key = { "Когда следующая тренировка": "/nextTrainingDate" };
+    const key = { "Когда следующая тренировка": "/nextTrainingDate." };
     const keyboard = makeKeyboard(key);
 
     await this.telegramAdapter.sendMessage(message, +tgId, keyboard);

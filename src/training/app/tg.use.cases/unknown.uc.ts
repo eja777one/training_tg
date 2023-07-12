@@ -18,7 +18,7 @@ export class UnknownUseCase
 
     const message = "Не удалось распознать комманду";
 
-    const key = { "Попробовать еще раз": "/start" };
+    const key = { "Попробовать еще раз": "/start." };
     const keyboard = makeKeyboard(key);
 
     await this.telegramAdapter.sendMessage(message, +tgId, keyboard);

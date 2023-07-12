@@ -32,7 +32,7 @@ export class InputStartDateUseCase
 
     if (isActiveTraining) {
       const message = "У тебя уже есть активные тренировки";
-      const key = { "Когда следующая тренировка": "/nextTrainingDate" };
+      const key = { "Когда следующая тренировка": "/nextTrainingDate." };
       const keyboard = makeKeyboard(key);
       await this.telegramAdapter.sendMessage(message, +tgId, keyboard);
     }
@@ -54,7 +54,7 @@ export class InputStartDateUseCase
       const message = "Кажется, что-то не так с датой. " +
         "Давай попробуем начать заново";
 
-      const key = { "Начать тренировки": "/startProgram" };
+      const key = { "Начать тренировки": "/startProgram." };
       const keyboard = makeKeyboard(key);
 
       await this.telegramAdapter.sendMessage(message, +tgId, keyboard);
@@ -82,7 +82,7 @@ export class InputStartDateUseCase
 
     if (!saveTraining) {
       const message = "Ой, произошла ошибка. Давай попробуем начать тренировки заново";
-      const key = { "Начать тренировки": "/startProgram" };
+      const key = { "Начать тренировки": "/startProgram." };
       const keyboard = makeKeyboard(key);
 
       await this.telegramAdapter.sendMessage(message, +tgId, keyboard);
@@ -92,7 +92,7 @@ export class InputStartDateUseCase
     const message = "Данные сохранены. Первая тренировака состоится " +
       formatDate + ". Я пришлю уведомление";
 
-    const key = { "Когда следующая тренировка": "/nextTrainingDate" };
+    const key = { "Когда следующая тренировка": "/nextTrainingDate." };
     const keyboard = makeKeyboard(key);
 
     await this.telegramAdapter.sendMessage(message, +tgId, keyboard);

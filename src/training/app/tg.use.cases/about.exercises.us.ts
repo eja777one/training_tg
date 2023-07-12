@@ -31,7 +31,7 @@ export class AboutExercisesUseCase
       "5. Мосты (10 уровней)\n" +
       "6. Отжимания в стойке на руках (10 уровней)\n";
 
-    const key = { "Начать тренировки": "/startProgram" };
+    const key = { "Начать тренировки": "/startProgram." };
     const keyboard = makeKeyboard(key);
 
     await this.telegramAdapter.sendMessage(message, +tgId, keyboard);

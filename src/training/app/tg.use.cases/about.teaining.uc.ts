@@ -28,7 +28,7 @@ export class AboutTrainingUseCase
     const message = "Я @Super_Self_Training_Bot. Я помогу записывать твои" +
       " тренировки по программе: 'Тренировки заключенных'";
 
-    const key = { "Посмотреть упражнения": "/aboutExercises" };
+    const key = { "Посмотреть упражнения": "/aboutExercises." };
     const keyboard = makeKeyboard(key);
 
     await this.telegramAdapter.sendMessage(message, +tgId, keyboard);

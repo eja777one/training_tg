@@ -28,7 +28,7 @@ export class StartProgramUseCase
 
     if (training) {
       const message = "У тебя уже есть активные тренировки";
-      const key = { "Когда следующая тренировка": "/nextTrainingDate" };
+      const key = { "Когда следующая тренировка": "/nextTrainingDate." };
       const keyboard = makeKeyboard(key);
       await this.telegramAdapter.sendMessage(message, +tgId, keyboard);
     }

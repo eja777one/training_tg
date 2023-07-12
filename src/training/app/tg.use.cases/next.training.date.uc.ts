@@ -27,7 +27,7 @@ export class NextTrainingDateUseCase
       const message = "Не могу найти следующую тренировку. Предлагаю" +
         " посмотреть программу упражнений и начать тренировки";
 
-      const key = { "Посмотреть упражнения": "/aboutExercises" };
+      const key = { "Посмотреть упражнения": "/aboutExercises." };
       const keyboard = makeKeyboard(key);
 
       await this.telegramAdapter.sendMessage(message, +tgId, keyboard);

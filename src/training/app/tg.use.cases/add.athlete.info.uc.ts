@@ -26,7 +26,7 @@ export class AddAthleteInfoUseCase
     if (isAthleteExists) {
       const message = "Ты ранее сообщал информацию о себе";
 
-      const key = { "Изменить инфо обо мне": "/modMyInfo" };
+      const key = { "Изменить инфо обо мне": "/modMyInfo." };
       const keyboard = makeKeyboard(key);
 
       await this.telegramAdapter.sendMessage(message, +tgId, keyboard);

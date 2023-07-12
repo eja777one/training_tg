@@ -57,37 +57,37 @@ export class StartTrainingUseCase
     for (let key of Object.keys(trainingObj)) {
       switch (key) {
         case "push-ups":
-          keys["Начать отжимания"] = "/goPushUps";
+          keys["Начать отжимания"] = "/goPushUps.";
           addMessage += exercises[key] + " и ";
           await this.trainingRepository.savePushUps(
             new PushUps(date, training.id));
           break;
         case "leg-lifts":
-          keys["Начать подъемы ног"] = "/goLegLifts";
+          keys["Начать подъемы ног"] = "/goLegLifts.";
           addMessage += exercises[key] + " и ";
           await this.trainingRepository.saveLegLifts(
             new LegLifts(date, training.id));
           break;
         case "pull-ups":
-          keys["Начать подтягивания"] = "/goPullUps";
+          keys["Начать подтягивания"] = "/goPullUps.";
           addMessage += exercises[key] + " и ";
           await this.trainingRepository.savePullUps(
             new PullUps(date, training.id));
           break;
         case "squats":
-          keys["Начать приседания"] = "/goSquats";
+          keys["Начать приседания"] = "/goSquats.";
           addMessage += exercises[key] + " и ";
           await this.trainingRepository.saveSquats(
             new Squats(date, training.id));
           break;
         case "handstand-push-ups":
-          keys["Начать отжимания в стойке"] = "/goHandstandPushUps";
+          keys["Начать отжимания в стойке"] = "/goHandstandPushUps.";
           addMessage += exercises[key] + " и ";
           await this.trainingRepository.saveHandstandPushUps(
             new HandstandPushUps(date, training.id));
           break;
         case "bridge":
-          keys["Начать мосты"] = "/goBridge";
+          keys["Начать мосты"] = "/goBridge.";
           addMessage += exercises[key] + " и ";
           await this.trainingRepository.saveBridge(
             new Bridge(date, training.id));
@@ -108,7 +108,7 @@ export class StartTrainingUseCase
       const message = "Не могу найти следующую тренировку. Предлагаю" +
         " посмотреть программу упражнений и начать тренировки";
 
-      const key = { "Посмотреть упражнения": "/aboutExercises" };
+      const key = { "Посмотреть упражнения": "/aboutExercises." };
       const keyboard = makeKeyboard(key);
 
       await this.telegramAdapter.sendMessage(message, +tgId, keyboard);
@@ -124,7 +124,7 @@ export class StartTrainingUseCase
     if (today < nextTraining) {
       const message = "Кажется твоя тренировка не сегодня";
 
-      const key = { "Когда следующая тренировка": "/nextTrainingDate" };
+      const key = { "Когда следующая тренировка": "/nextTrainingDate." };
       const keyboard = makeKeyboard(key);
 
       await this.telegramAdapter.sendMessage(message, +tgId, keyboard);
@@ -142,7 +142,7 @@ export class StartTrainingUseCase
 
       const message = "Кажется ты пропустил тренировку. Поэтому я ее перенес";
 
-      const key = { "Когда следующая тренировка": "/nextTrainingDate" };
+      const key = { "Когда следующая тренировка": "/nextTrainingDate." };
       const keyboard = makeKeyboard(key);
 
       await this.telegramAdapter.sendMessage(message, +tgId, keyboard);
