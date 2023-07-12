@@ -23,15 +23,14 @@ async function bootstrap() {
 
   console.log(baseUrl);
 
-  const tgUrl = baseUrl + process.env.TG_END_POINT;
-  console.log(1);
+  // const tgUrl = baseUrl + process.env.TG_END_POINT;
+
   await app.listen(3004);
   console.log(2);
 
-  await telegramAdapter.echo();
-  await telegramAdapter.setWebhook(tgUrl);
+  // await telegramAdapter.echo();
+  // await telegramAdapter.setWebhook(tgUrl);
   console.log(3);
-
 }
 
 bootstrap();

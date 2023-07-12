@@ -11,11 +11,20 @@ export class AppController {
   }
 
   @Get()
+  async helloWorld(): Promise<string> {
+    // const tgUrl = process.env.BASE_URL + process.env.TG_END_POINT;
+    // // await this.telegramAdapter.echo();
+    // // await this.telegramAdapter.setWebhook(tgUrl);
+    // console.log(1);
+    return "TG BOT was started";
+  }
+
+  @Get("startBot")
   async startBot(): Promise<string> {
     const tgUrl = process.env.BASE_URL + process.env.TG_END_POINT;
-    // await this.telegramAdapter.echo();
-    // await this.telegramAdapter.setWebhook(tgUrl);
-    console.log(1);
+    await this.telegramAdapter.echo();
+    await this.telegramAdapter.setWebhook(tgUrl);
+    console.log(123);
     return "TG BOT was started";
   }
 
@@ -29,4 +38,6 @@ export class AppController {
   async logMessage(@Body() payload: any) {
     console.log(payload);
   }
+
+
 }
