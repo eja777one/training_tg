@@ -45,7 +45,7 @@ export class TelegramHandlerUseCase
     tgTime = tgTime || command.payload?.callback_query?.message?.date;
 
     switch (true) {
-      case /\/start/.test(tgText):
+      case /^\/start{6}$/.test(tgText):
         await this.commandBus.execute(new StartCommand(tgId, tgName));
         break;
       case /\/addMyInfo/.test(tgText):
